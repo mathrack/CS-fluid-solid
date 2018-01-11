@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+
+# Ensure the correct command is found:
+export PATH="/home/r4/flageul/build-saturne-git/bin":$PATH
+
+# Run command:
+
+\code_saturne run

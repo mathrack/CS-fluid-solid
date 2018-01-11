@@ -1,0 +1,758 @@
+<?xml version="1.0" ?>
+<studymanager>
+
+  <!--
+       ****************************
+       *    INTERNAL COUPLING     *
+       ****************************
+  -->
+
+  <repository>/home/cc/workdir/valid-saturne-git/autovnv/</repository>
+  <destination>/home/cc/workdir/valid-saturne-git/autovnv/RUN/</destination>
+
+  <study label="internal_coupling_steady" status="on">
+
+    <case compute="on" label="imrgra0" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra1" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra4" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <!-- ######################################################################################### -->
+
+    <postpro args="-e imrgra0" label="post.py" status="on">
+      <data dest="" file="imrgra0_errors.dat">
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra0_ref" label="post.py" status="on">
+      <data dest="" file="imrgra0_ref_errors.dat">
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra1" label="post.py" status="on">
+      <data dest="" file="imrgra1_errors.dat">
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra1_ref" label="post.py" status="on">
+      <data dest="" file="imrgra1_ref_errors.dat">
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra4" label="post.py" status="on">
+      <data dest="" file="imrgra4_errors.dat">
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra4_ref" label="post.py" status="on">
+      <data dest="" file="imrgra4_ref_errors.dat">
+      </data>
+    </postpro>
+
+  </study>
+
+  <study label="internal_coupling_unsteady" status="on">
+
+    <measurement file="HEX.dat" path=""> 
+      <plot fig="1 " fmt="k--" legend="First order error" markersize="0" xcol="1" ycol="2"/>
+      <plot fig="1 " fmt="k-" legend="Second order error" markersize="0" xcol="1" ycol="3"/>
+      <plot fig="3 " fmt="k-" legend="Second order error" markersize="0" xcol="1" ycol="4"/>
+    </measurement>
+    <measurement file="TET.dat" path="">
+      <plot fig="2 " fmt="k--" legend="First order error" markersize="0" xcol="1" ycol="2"/>
+      <plot fig="2 " fmt="k-" legend="Second order error" markersize="0" xcol="1" ycol="3"/>
+      <plot fig="4 " fmt="k--" legend="First order error" markersize="0" xcol="1" ycol="4"/>
+    </measurement>
+
+    <case compute="on" label="imrgra0" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra0_ref" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra1" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra4" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra4_ref" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <!-- ######################################################################################### -->
+
+    <postpro args="-e imrgra0" label="post.py" status="on">
+      <data dest="" file="imrgra0_hexa.dat">
+        <plot fig="1 " fmt="-"  color="gedf" markersize="3.5"  legend="imrgra0" xcol="1" ycol="2"/>
+        <plot fig="3 " fmt="-"  color="gedf" markersize="3.5"  legend="imrgra0" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra0_tetra.dat">
+        <plot fig="2 " fmt="-"  color="gedf" markersize="3.5"  legend="imrgra0" xcol="1" ycol="2"/>
+        <plot fig="4 " fmt="-"  color="gedf" markersize="3.5"  legend="imrgra0" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra0_ref" label="post.py" status="on">
+      <data dest="" file="imrgra0_ref_hexa.dat">
+        <plot fig="1 " fmt="s"  color="gedf" markersize="3.5"  legend="imrgra0 REF" xcol="1" ycol="2"/>
+        <plot fig="3 " fmt="s"  color="gedf" markersize="3.5"  legend="imrgra0 REF" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra0_ref_tetra.dat">                                                    
+        <plot fig="2 " fmt="s"  color="gedf" markersize="3.5"  legend="imrgra0 REF" xcol="1" ycol="2"/>
+        <plot fig="4 " fmt="s"  color="gedf" markersize="3.5"  legend="imrgra0 REF" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra1" label="post.py" status="on">
+      <data dest="" file="imrgra1_hexa.dat">
+        <plot fig="1 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="2"/>
+        <plot fig="3 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra1_tetra.dat">
+        <plot fig="2 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="2"/>
+        <plot fig="4 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra1_ref" label="post.py" status="on">
+      <data dest="" file="imrgra1_ref_hexa.dat">
+        <plot fig="1 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="2"/>
+        <plot fig="3 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra1_ref_tetra.dat">
+        <plot fig="2 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="2"/>
+        <plot fig="4 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra4" label="post.py" status="on">
+      <data dest="" file="imrgra4_hexa.dat">
+        <plot fig="1 " fmt="-."  color="yedf" markersize="3.5"  legend="imrgra4" xcol="1" ycol="2"/>
+        <plot fig="3 " fmt="-."  color="yedf" markersize="3.5"  legend="imrgra4" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra4_tetra.dat">
+        <plot fig="2 " fmt="--"  color="yedf" markersize="3.5"  legend="imrgra4" xcol="1" ycol="2"/>
+        <plot fig="4 " fmt="--"  color="yedf" markersize="3.5"  legend="imrgra4" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra4_ref" label="post.py" status="on">
+      <data dest="" file="imrgra4_ref_hexa.dat">
+        <plot fig="1 " fmt="d"  color="yedf" markersize="3.5"  legend="imrgra4 REF" xcol="1" ycol="2"/>
+        <plot fig="3 " fmt="d"  color="yedf" markersize="3.5"  legend="imrgra4 REF" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra4_ref_tetra.dat">
+        <plot fig="2 " fmt="d"  color="yedf" markersize="3.5"  legend="imrgra4 REF" xcol="1" ycol="2"/>
+        <plot fig="4 " fmt="d"  color="yedf" markersize="3.5"  legend="imrgra4 REF" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <subplot id="1 " legstatus="on" legpos="0.0 0.0" title="HEX meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>
+      <plt_command>ax.set_yscale('log')</plt_command>
+    </subplot>
+    <subplot id="2 " legstatus="on" legpos="0.0 0.0" title="TET meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>                                          
+      <plt_command>ax.set_yscale('log')</plt_command>                                          
+    </subplot>
+    <subplot id="3 " legstatus="on" legpos="0.0 0.0" title="HEX meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>
+      <plt_command>ax.set_yscale('log')</plt_command>
+    </subplot>
+    <subplot id="4 " legstatus="on" legpos="0.0 0.0" title="TET meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>
+      <plt_command>ax.set_yscale('log')</plt_command>
+    </subplot>
+
+    <figure figsize="(4,3)" idlist="1 " name="fig_hex"/>
+    <figure figsize="(4,3)" idlist="2 " name="fig_tet"/>
+    <figure figsize="(4,3)" idlist="3 " name="fig_hex_grad"/>
+    <figure figsize="(4,3)" idlist="4 " name="fig_tet_grad"/>
+
+  </study>
+
+  <study label="internal_coupling_tensor" status="on">
+
+    <measurement file="HEX.dat" path="">
+      <plot fig="5 " fmt="k--" legend="First order error" markersize="0" xcol="1" ycol="2"/>
+      <plot fig="5 " fmt="k-" legend="Second order error" markersize="0" xcol="1" ycol="3"/>
+      <plot fig="7 " fmt="k--" legend="First order error" markersize="0" xcol="1" ycol="4"/>
+      <plot fig="7 " fmt="k-" legend="Second order error" markersize="0" xcol="1" ycol="5"/>
+    </measurement>
+    <measurement file="TET.dat" path="">
+      <plot fig="6 " fmt="k--" legend="First order error" markersize="0" xcol="1" ycol="2"/>
+      <plot fig="6 " fmt="k-" legend="Second order error" markersize="0" xcol="1" ycol="3"/>
+      <plot fig="8 " fmt="k--" legend="First order error" markersize="0" xcol="1" ycol="4"/>
+    </measurement>
+
+    <case compute="on" label="imrgra1" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa05" status="on">
+      <prepro args="-m ../MESH/hexa05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa10" status="on">
+      <prepro args="-m ../MESH/hexa10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa15" status="on">
+      <prepro args="-m ../MESH/hexa15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa20" status="on">
+      <prepro args="-m ../MESH/hexa20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa30" status="on">
+      <prepro args="-m ../MESH/hexa30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa40" status="on">
+      <prepro args="-m ../MESH/hexa40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa60" status="on">
+      <prepro args="-m ../MESH/hexa60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="hexa80" status="on">
+      <prepro args="-m ../MESH/hexa80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet05" status="on">
+      <prepro args="-m ../MESH/tet05 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet10" status="on">
+      <prepro args="-m ../MESH/tet10 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet15" status="on">
+      <prepro args="-m ../MESH/tet15 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet20" status="on">
+      <prepro args="-m ../MESH/tet20 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet30" status="on">
+      <prepro args="-m ../MESH/tet30 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet40" status="on">
+      <prepro args="-m ../MESH/tet40 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet60" status="on">
+      <prepro args="-m ../MESH/tet60 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+    <case compute="on" label="imrgra1_ref" post="on" run_id="tet80" status="on">
+      <prepro args="-m ../MESH/tet80 -p cs_user_scripts.py" label="grid.py" status="on"/>
+    </case>
+
+    <!-- ######################################################################################### -->
+
+    <postpro args="-e imrgra1" label="post.py" status="on">
+      <data dest="" file="imrgra1_hexa.dat">
+        <plot fig="5 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="2"/>
+        <plot fig="7 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra1_tetra.dat">
+        <plot fig="6 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="2"/>
+        <plot fig="8 " fmt="--"  color="bedf" markersize="3.5"  legend="imrgra1" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <postpro args="-e imrgra1_ref" label="post.py" status="on">
+      <data dest="" file="imrgra1_ref_hexa.dat">
+        <plot fig="5 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="2"/>
+        <plot fig="7 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="3"/>
+      </data>
+      <data dest="" file="imrgra1_ref_tetra.dat">
+        <plot fig="6 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="2"/>
+        <plot fig="8 " fmt="*"  color="bedf" markersize="3.5"  legend="imrgra1 REF" xcol="1" ycol="3"/>
+      </data>
+    </postpro>
+
+    <subplot id="5 " legstatus="on" legpos="0.0 0.0" title="HEX meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>
+      <plt_command>ax.set_yscale('log')</plt_command>
+    </subplot>
+    <subplot id="6 " legstatus="on" legpos="0.0 0.0" title="TET meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>
+      <plt_command>ax.set_yscale('log')</plt_command>
+    </subplot>
+    <subplot id="7 " legstatus="on" legpos="0.0 0.0" title="HEX meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>
+      <plt_command>ax.set_yscale('log')</plt_command>
+    </subplot>
+    <subplot id="8 " legstatus="on" legpos="0.0 0.0" title="TET meshes" xlabel="$\mathtt{n_{sys}}^{1/3}$" ylabel="$L_{2}$ Error">
+      <plt_command>ax.set_xscale('log')</plt_command>
+      <plt_command>ax.set_yscale('log')</plt_command>
+    </subplot>
+
+    <figure figsize="(4,3)" idlist="5 " name="fig_hex"/>
+    <figure figsize="(4,3)" idlist="6 " name="fig_tet"/>
+    <figure figsize="(4,3)" idlist="7 " name="fig_hex_grad"/>
+    <figure figsize="(4,3)" idlist="8 " name="fig_tet_grad"/>
+
+  </study>
+
+</studymanager>
