@@ -27,4 +27,4 @@ The associated error is thus zero.
 # Acknowledgements
 
 The author and coworkers thank the Slovenian Research Agency and EDF R&D for funding the study (research projects P2-0026 and PR-07184).
-We also thank framasoft and the Institut Jozef Stefan for providing the gitlab services that host the present project at [https://repo.ijs.si/CFLAG/CS-Fluid-Solid](https://repo.ijs.si/CFLAG/CS-Fluid-Solid) and [https://framagit.org/CFLAG/incompact3d](https://framagit.org/CFLAG/incompact3d).
+We also thank framasoft and the Institut Jozef Stefan for providing the gitlab services that host the present project at [https://repo.ijs.si/CFLAG/CS-Fluid-Solid](https://repo.ijs.si/CFLAG/CS-Fluid-Solid) and [https://framagit.org/CFLAG/CS-fluid-solid](https://framagit.org/CFLAG/CS-fluid-solid).
