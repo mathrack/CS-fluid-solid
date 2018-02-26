@@ -323,13 +323,6 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     rhs1=0.;
     rhs2=pr*xzepf-gggg(i)*pr*xzeps;
     bb=linsolve(mat,-[rhs1;rhs2]);
-    // For wall-normal dissipation
-    yeps=t_dissm(nb_sol)*t_ydissm(nb_sol)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
-    yepf=t_dissm(nb_flu)*t_ydissm(nb_flu)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
-    mat=[yf/(aa(1)*aa(1)), -ys/(aa(2)*aa(2)); yf, -g2*g2*ys];
-    rhs1=pr*yepf/(aa(1)*aa(1))-gggg(i)*pr*yeps/(aa(2)*aa(2));
-    rhs2=pr*yepf-g2*g2*gggg(i)*pr*yeps;
-    cc=linsolve(mat,-[rhs1;rhs2]);
     // Temperature variance at the fluid-solid interface
     af=aa(1);
     as=aa(2);
@@ -366,16 +359,15 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     //
     // Reconstruction of dtdy*dtdy
     //
-    af=cc(1)
-    as=cc(2)
-    //
     yeps=t_dissm(nb_sol)*t_ydissm(nb_sol)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
     yepf=t_dissm(nb_flu)*t_ydissm(nb_flu)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
+    //   cos(alpha)
+    cosalpha = (0.5*aa(1)/sqrt(ttf*yepf*pr)+0.5*aa(2)/sqrt(tts*yeps*gggg(i)*pr))/2;
     //    on the fluid side
-    dtdydtdy_flu = pr*yepf-cc(1)*yf;
+    dtdydtdy_flu = ( (aa(1)-2*pr*epf*yf)/(2*cosalpha*sqrt(ttf-aa(1)*yf+pr*epf*(yf**2))) )**2;
 //      mydtdtyf(myii(i),myjj(i)) = dtdydtdy_flu;
     //    on the solid side
-    dtdydtdy_sol = gggg(i)*pr*yeps+cc(2)*ys;
+    dtdydtdy_sol = ( (aa(2)-2*gggg(i)*pr*eps*ys)/(2*cosalpha*sqrt(ttf-aa(1)*yf+pr*epf*(yf**2))) )**2;
 //      mydtdtys(myii(i),myjj(i)) = dtdydtdy_sol;
 
     //
