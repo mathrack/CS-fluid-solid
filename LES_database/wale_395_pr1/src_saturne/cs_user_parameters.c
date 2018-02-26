@@ -2,12 +2,12 @@
  * User functions for input of calculation parameters.
  *============================================================================*/
 
-/* Code_Saturne version 5.0.3-patch */
+/* Code_Saturne version 5.0.7-patch */
 
 /*
   This file is part of Code_Saturne, a general-purpose CFD tool.
 
-  Copyright (C) 1998-2017 EDF S.A.
+  Copyright (C) 1998-2018 EDF S.A.
 
   This program is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -330,7 +330,7 @@ _my_tdiss(const void *input,
 void
 cs_user_model(void)
 {
-  const int my_nb_scalar = 4;
+  const int my_nb_scalar = 5;
   const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
@@ -365,7 +365,7 @@ cs_user_parameters(void)
   var_cal_opt.nswrgr = 1;
   cs_field_set_key_struct(fu, key_cal_opt_id, &var_cal_opt);
 
-  const int my_nb_scalar = 4;
+  const int my_nb_scalar = 5;
   const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
@@ -386,40 +386,6 @@ cs_user_parameters(void)
 
 /*----------------------------------------------------------------------------*/
 /*!
- * \brief Define or modify output user parameters.
- */
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_output(void)
-{
-
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Define linear solver options.
- *
- * This function is called at the setup stage, once user and most model-based
- * fields are defined.
- *
- * Available native iterative linear solvers include conjugate gradient,
- * Jacobi, BiCGStab, BiCGStab2, and GMRES. For symmetric linear systems,
- * an algebraic multigrid solver is available (and recommended).
- *
- * External solvers may also be setup using this function, the cs_sles_t
- * mechanism alowing such through user-define functions.
- */
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_linear_solvers(void)
-{
-
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
  * \brief Define time moments.
  *
  * This function is called at the setup stage, once user and most model-based
@@ -432,8 +398,8 @@ void
 cs_user_time_moments(void)
 {
 
-  int nt_start = 3500010;
-  const int my_nb_scalar = 4;
+  int nt_start = 1500010;
+  const int my_nb_scalar = 5;
   static const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
@@ -649,7 +615,7 @@ cs_user_time_moments(void)
 void
 cs_user_internal_coupling(void)
 {
-  const int my_nb_scalar = 4;
+  const int my_nb_scalar = 5;
   const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
@@ -680,23 +646,3 @@ cs_user_internal_coupling_add_volumes(cs_mesh_t  *mesh)
 {
    cs_internal_coupling_add_volume(mesh,"-1.<y<1.");
 }
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Define volumesi from separated meshes as internal coupling zones.
- *
- * These zones must be disjoint and the face selection criteria must be specified.
- *
- * \param[in, out]  mesh  pointer to a cs_mesh_t structure
- */
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_internal_coupling_from_disjoint_meshes(cs_mesh_t  *mesh)
-{
-
-}
-
-/*----------------------------------------------------------------------------*/
-
-END_C_DECLS

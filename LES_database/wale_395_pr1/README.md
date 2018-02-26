@@ -40,8 +40,8 @@ Sub MacroN()
 
     Sheets("scalar").Select
     Dim ny As Integer: ny = 73
-    Dim comment() As String: comment = Split("diric,neuma,11,12", ",")
-    Dim n_fld As Integer: n_fld = 4
+    Dim comment() As String: comment = Split("diric,neuma,11,12,13", ",")
+    Dim n_fld As Integer: n_fld = 5
     Dim i As Integer, ifld As Integer
     For ifld = 0 To n_fld - 1
         i = 1 + ifld * (ny + 1)

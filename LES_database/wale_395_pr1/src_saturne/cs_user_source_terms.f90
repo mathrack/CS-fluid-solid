@@ -8,11 +8,11 @@
 
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3-patch
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software

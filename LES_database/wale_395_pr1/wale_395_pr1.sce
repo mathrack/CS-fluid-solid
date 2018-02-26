@@ -184,10 +184,10 @@ write_csv([yp(nb_sol+1:ny),dissp(nb_sol+1:ny),mudissp(nb_sol+1:ny)], "./csv/diss
 //write_csv([ym,um,mu_tm/mu,sqrt(cs)], "./csv/moy1.csv"," ");
 
 // Diric + Neuma + Robin + Conjg
-nb_head = 4;
-head=["diric","neuma","11","12"];
-gggg=[ 1.    , 1.    ,  1.,  5.];
-kkkk=[ 1.    , 1.    ,  1.,  5.];
+nb_head = 5;
+head=["diric","neuma","11","12","13"];
+gggg=[ 1.    , 1.    ,  1., 1.3, 0.1];
+kkkk=[ 1.    , 1.    ,  1., 2.8, 0.23];
 
 // mean + variance + flux + grad + diss + mut*grad + mut*diss
 nb_tail = 1+1+3+3+6+3+1;
