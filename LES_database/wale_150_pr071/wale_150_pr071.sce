@@ -362,7 +362,7 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     yeps=t_dissm(nb_sol)*t_ydissm(nb_sol)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
     yepf=t_dissm(nb_flu)*t_ydissm(nb_flu)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
     //   cos(alpha)
-    cosalpha = (0.5*aa(1)/sqrt(ttf*yepf*pr)+0.5*aa(2)/sqrt(tts*yeps*gggg(i)*pr))/2;
+    cosalpha = 0.5*aa(2)/sqrt(tts*yeps*gggg(i)*pr);
     //    on the fluid side
     dtdydtdy_flu = ( (aa(1)-2*pr*epf*yf)/(2*cosalpha*sqrt(ttf-aa(1)*yf+pr*epf*(yf**2))) )**2;
 //      mydtdtyf(myii(i),myjj(i)) = dtdydtdy_flu;
@@ -388,4 +388,4 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
 
 end
 
-//exit;
+exit;
