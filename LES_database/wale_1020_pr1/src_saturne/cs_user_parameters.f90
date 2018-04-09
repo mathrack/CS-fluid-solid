@@ -1,10 +1,10 @@
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
@@ -51,7 +51,6 @@
 !>   These routines are described at the end of this file and will be activated
 !>   when the corresponding option is selected in the usppmo routine.
 !-------------------------------------------------------------------------------
-
 
 !===============================================================================
 
@@ -150,13 +149,13 @@ integer nmodpp
 integer ii, kscmin, kscmax, ifcvsl
 type(var_cal_opt) :: vcopt
 
-  ipstdv(ipstfo) = 1
+  ipstdv(ipstfo) = 1!  iforbr = 1
   ileaux = 1
   idtvar = 0
-  ntmabs = 3000000
+  ntmabs = 2500000
   dtref  = 0.002d0
   imvisf = 1
-  imrgra = 0
+  imrgra = 0!1
 
   call field_get_key_struct_var_cal_opt(ivarfl(iu), vcopt)
   vcopt%blencv = 1.0d0
@@ -238,7 +237,7 @@ implicit none
 
 integer nmodpp
 
-  ntlist = 500
+  ntlist = 1000
 
 return
 end subroutine usipes

@@ -1,10 +1,10 @@
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
@@ -131,12 +131,16 @@ double precision, dimension(ncel) :: my_rand_t
 double precision, dimension(:,:), pointer :: cvar_iu
 double precision, dimension(:), pointer :: cvar_it
 
+integer, allocatable, dimension(:) :: lstelt
+
 !===============================================================================
 
 
 !===============================================================================
 ! Initialization
 !===============================================================================
+
+allocate(lstelt(ncel)) ! temporary array for cells selection
 
 if (isuite.eq.0) then
 
@@ -191,6 +195,7 @@ if (isuite.eq.0) then
   enddo
   endif
 endif
+
 !--------
 ! Formats
 !--------
@@ -198,6 +203,8 @@ endif
 !----
 ! End
 !----
+
+deallocate(lstelt) ! temporary array for cells selection
 
 return
 end subroutine cs_user_f_initialization

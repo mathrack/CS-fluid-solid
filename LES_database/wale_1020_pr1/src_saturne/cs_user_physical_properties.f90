@@ -1,10 +1,10 @@
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
@@ -144,10 +144,11 @@ integer          mbrom
 double precision dt(ncelet)
 
 ! Local variables
-integer i, j, iel, iscal, ifcvsl
+integer i, j
 double precision :: kK, gG
-double precision, dimension(2) :: ratio_K, ratio_G
+double precision, dimension(3) :: ratio_K, ratio_G
 
+integer          iel, iscal, ifcvsl
 double precision :: y, rho_sol, lbd_sol
 double precision, dimension(:), pointer :: cvar_diff, cvar_rho
 
@@ -160,8 +161,10 @@ enddo
 ! Define thermal activity ratio K and fluid-to-solid thermal diffusivity ratio
 ratio_K(1) = 1.
 ratio_G(1) = 1.
-ratio_K(2) = 5.
-ratio_G(2) = 5.
+ratio_K(2) = 2.8
+ratio_G(2) = 1.3
+ratio_K(3) = 0.23
+ratio_G(3) = 0.1
 
 do iscal = 3, nscal
 
@@ -189,7 +192,7 @@ do iscal = 3, nscal
     endif
   enddo ! iel = 1, ncel
 
-enddo ! iscal = nscal, nscal
+enddo ! iscal = 3, nscal
 
 !--------
 ! Formats

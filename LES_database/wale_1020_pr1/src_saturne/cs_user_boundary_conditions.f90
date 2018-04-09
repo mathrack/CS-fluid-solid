@@ -1,10 +1,10 @@
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
@@ -450,6 +450,7 @@ double precision rcodcl(nfabor,nvar,3)
 integer          ifac, iel, ilelt, nlelt, ii
 
 integer, allocatable, dimension(:) :: lstelt
+
 type(var_cal_opt) :: vcopt
 logical, dimension(nscal) :: this_scalar_is_coupled
 

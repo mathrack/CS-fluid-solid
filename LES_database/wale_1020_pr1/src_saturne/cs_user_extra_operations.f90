@@ -1,10 +1,10 @@
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
@@ -89,16 +89,20 @@ double precision dt(ncelet)
 
 ! Local variables
 
-integer          ifac, iel,  ii, ilelt  , nlelt
+integer          ifac
+integer          ii
+integer          ilelt  , nlelt
 
 double precision xfor(3)
 double precision, dimension(:,:), pointer :: bfprp_for
 
 integer, allocatable, dimension(:) :: lstelt
 
+integer :: iel
 double precision :: y, tbulk, myvoltot
 double precision, dimension(nscal) :: tbulk_nsca
 double precision, dimension(:), pointer :: mytemp
+!< [loc_var_dec]
 
 !===============================================================================
 
@@ -109,11 +113,13 @@ double precision, dimension(:), pointer :: mytemp
 if (ipstdv(ipstfo).ge.1) call field_get_val_v(iforbr, bfprp_for)
 
 ! Allocate a temporary array for cells or interior/boundary faces selection
-allocate(lstelt(nfabor))
+allocate(lstelt(nfabor))!max(ncel,nfac,nfabor)))
 
 !===============================================================================
-! Compute global efforts on a subset of faces
+! Example: compute global efforts on a subset of faces
 !===============================================================================
+
+! If efforts have been calculated correctly:
 
 if (ipstdv(ipstfo).ge.1) then
 
@@ -153,12 +159,12 @@ if (ipstdv(ipstfo).ge.1) then
     write(nfecra,*) 'cedric output : friction top wall = ',xfor
   endif
 
-endif
+endif ! ipstdv(ipstfo).ge.1
 
 ! Deallocate the temporary array
 deallocate(lstelt)
 
-! Compute and print bulk temperature for each scalar
+! Compute and print bulk temperatures
 if (nscal.ge.1) then
 
   ! Compute bulk temperature for each scalar and total volume
@@ -205,11 +211,11 @@ if (nscal.ge.1) then
           tbulk = tbulk + volume(iel)*mytemp(iel)
         enddo
     end select
-
     if (irangp.ge.0) then
       call parsom(tbulk)
     endif
     tbulk_nsca(ii) = tbulk/myvoltot
+
   enddo ! ii = 1, nscal
 
   ! Remove bulk part except for nscal=1 => diric
@@ -231,15 +237,15 @@ if (nscal.ge.1) then
         enddo
     end select
 
-  enddo
-  endif
+  enddo ! ii = 2, nscal
+  endif ! nscal.ge.2
 
   ! Listing
   if (mod(ntcabs,10).eq.0) then
 
     ! Print bulk temperatures in fluid + solid
     if (irangp.le.0) then
-      write(nfecra,*) 'cedric output : bulk temperature = ',ttcabs,tbulk_nsca
+      write(nfecra,*) 'cedric output : bulk fluid temperature = ',ttcabs,tbulk_nsca
     endif
 
     ! Print bulk temperatures in solid
@@ -251,13 +257,13 @@ if (nscal.ge.1) then
         y = xyzcen(2, iel)
         if (1.lt.y .or. y.lt.-1.) then
           myvoltot = myvoltot + volume(iel)
-        endif
-      enddo
+        endif ! 1.lt.y .or. y.lt.-1.
+      enddo ! iel = 1,ncel
       if (irangp.ge.0) then
         call parsom(myvoltot)
-      endif
+      endif ! irangp.ge.0
 
-      ! Compute bulk solid temp after correction
+      ! Compute bulk solid temp
       do ii = 3, nscal
         tbulk = 0.
         call field_get_val_s(ivarfl(isca(ii)),mytemp)
@@ -271,18 +277,18 @@ if (nscal.ge.1) then
           call parsom(tbulk)
         endif
         tbulk_nsca(ii) = tbulk/myvoltot
-      enddo
+      enddo ! ii = 3, nscal
 
       ! Print
       if (irangp.le.0) then
         write(nfecra,*) 'cedric output : bulk solid temperature = ',ttcabs,tbulk_nsca(3:)
       endif
 
-    endif
+    endif ! nscal.ge.3
 
-  endif
+  endif ! mod(ntcabs,10).eq.0
 
-endif
+endif ! nscal.ge.1
 
 return
 end subroutine cs_f_user_extra_operations
