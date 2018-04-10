@@ -180,6 +180,22 @@ isca=[ 1     , 2     , 3      , 4     , 5     , 6     , 7    , 8    , 9     , 10
 gggg=[ 1.    , 1.    , 0.5    , 0.5   , 0.5   , 1.    , 1.   , 1.   , 2.    , 2.   , 2.   ];
 aaaa=[ 1.    , 1.    , 0.5    , 1.    , 2.    , 0.5   , 1.   , 2.   , 0.5   , 1.   , 2.   ];
 kkkk=aaaa./sqrt(gggg);
+
+myii = zeros(11,1);
+myjj = zeros(11,1);
+mygg = zeros(9,1);
+mykk = zeros(9,1);
+myg2 = zeros(9,1);
+mytt = zeros(9,1);
+myepsf = zeros(9,1);
+myepss = zeros(9,1);
+mydyttf = zeros(9,1);
+mydytts = zeros(9,1);
+mydtdtxz = zeros(9,1);
+mydtdtyf = zeros(9,1);
+mydtdtys = zeros(9,1);
+myerror = zeros(9,1);
+
 // mean + variance + flux + grad + diss + mut*grad + mut*diss
 nb_tail = 1+1+3+3+6+3+1;
 tail=["_mean.dat",..
@@ -301,9 +317,29 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
                 t_mudissp/(mu*pr*(re**2)*(t_tau**2)*(u_tau**2))..
              ], strcat(["./csv/",head(i),"p.csv"])," ");
 
+  for k=1:ny
+    if (t_dissm(k) == 0) then
+      t_ydissm(k) = 0;
+    else
+      t_ydissm(k) = t_ydissm(k) * t_dissm(k);
+    end
+    if (t_dissp(k) == 0) then
+      t_ydissp(k) = 0;
+    else
+      t_ydissp(k) = t_ydissp(k) * t_dissp(k);
+    end
+  end
+
   if ~(i==1) & ~(i==2) then
     nb_flu=nb_sol+1;
     g2 = 1/(kkkk(i)*sqrt(gggg(i)));
+    //
+      myii(i) = i-2;
+      myjj(i) = 1;
+      mygg(myii(i),myjj(i)) = gggg(i);
+      mykk(myii(i),myjj(i)) = kkkk(i);
+      myg2(myii(i),myjj(i)) = g2;
+    //
     t_tau=t_tau_m; u_tau=utau_m;
     ys=ym(nb_sol);
     yf=ym(nb_flu);
@@ -317,8 +353,8 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     rhs2=ttf+pr*epf*(yf**2)-tts-gggg(i)*pr*eps*(ys**2);
     aa=linsolve(mat,-[rhs1;rhs2]);
     // For wall-parallel dissipation
-    xzeps=t_dissm(nb_sol)*(1-t_ydissm(nb_sol))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
-    xzepf=t_dissm(nb_flu)*(1-t_ydissm(nb_flu))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
+    xzeps=(t_dissm(nb_sol)-t_ydissm(nb_sol))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
+    xzepf=(t_dissm(nb_flu)-t_ydissm(nb_flu))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
     mat=[1., -g2; yf, -ys];
     rhs1=0.;
     rhs2=pr*xzepf-gggg(i)*pr*xzeps;
@@ -329,16 +365,16 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     //
     // Temperature variance : ttf-af*yf+pr*epf*(yf**2); OR tts-as*ys+pr*eps*(ys**2);
     //
-//      ttf-af*yf+pr*epf*(yf**2)
+      mytt(myii(i),myjj(i)) = ttf-af*yf+pr*epf*(yf**2);
     //
 
     //
     // Derivative of temperature variance
     //
     //   on the fluid side : af-2*pr*epf*yf; OR (as-2*gggg(i)*pr*eps*ys)*g2;
-//      mydyttf(myii(i),myjj(i)) = af-2*pr*epf*yf;
+      mydyttf(myii(i),myjj(i)) = af-2*pr*epf*yf;
     //   on the solid side : (af-2*pr*epf*yf)/g2; OR as-2*gggg(i)*pr*eps*ys;
-//      mydytts(myii(i),myjj(i)) = as-2*gggg(i)*pr*eps*ys;
+      mydytts(myii(i),myjj(i)) = as-2*gggg(i)*pr*eps*ys;
 
     //
     // Wall-parallel dissipation
@@ -350,42 +386,44 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     //
     // Reconstruction of dtdx*dtdx+dtdz*dtdz
     //
-    xzeps=t_dissm(nb_sol)*(1-t_ydissm(nb_sol))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
-    xzepf=t_dissm(nb_flu)*(1-t_ydissm(nb_flu))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
+    xzeps=(t_dissm(nb_sol)-t_ydissm(nb_sol))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
+    xzepf=(t_dissm(nb_flu)-t_ydissm(nb_flu))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
     //    on the fluid or solid side : pr*xzepf-bb(1)*yf; OR gggg(i)*pr*xzeps-bb(2)*ys;
     dtdxdtdx_dtdzdtdz = (pr*xzepf-bb(1)*yf);
-//      mydtdtxz(myii(i),myjj(i)) = dtdxdtdx_dtdzdtdz;
+      mydtdtxz(myii(i),myjj(i)) = dtdxdtdx_dtdzdtdz;
 
     //
     // Reconstruction of dtdy*dtdy
     //
-    yeps=t_dissm(nb_sol)*t_ydissm(nb_sol)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
-    yepf=t_dissm(nb_flu)*t_ydissm(nb_flu)/(pr*(re**2)*(t_tau**2)*(u_tau**2));
+    yeps=(t_ydissm(nb_sol))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
+    yepf=(t_ydissm(nb_flu))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
     //   cos(alpha)
     cosalpha = 0.5*aa(2)/sqrt(tts*yeps*gggg(i)*pr);
     //    on the fluid side
     dtdydtdy_flu = ( (aa(1)-2*pr*epf*yf)/(2*cosalpha*sqrt(ttf-aa(1)*yf+pr*epf*(yf**2))) )**2;
-//      mydtdtyf(myii(i),myjj(i)) = dtdydtdy_flu;
+      mydtdtyf(myii(i),myjj(i)) = dtdydtdy_flu;
     //    on the solid side
     dtdydtdy_sol = ( (aa(2)-2*gggg(i)*pr*eps*ys)/(2*cosalpha*sqrt(ttf-aa(1)*yf+pr*epf*(yf**2))) )**2;
-//      mydtdtys(myii(i),myjj(i)) = dtdydtdy_sol;
+      mydtdtys(myii(i),myjj(i)) = dtdydtdy_sol;
 
     //
     // Reconstruction of ratios and error
     //
-    dtdt_flu = dtdydtdy_flu + dtdxdtdx_dtdzdtdz; //myepsf(myii(i),myjj(i))=dtdt_flu/pr;
-    dtdt_sol = dtdydtdy_sol + dtdxdtdx_dtdzdtdz; //myepss(myii(i),myjj(i))=dtdt_sol/pr/gggg(i);
+    dtdt_flu = dtdydtdy_flu + dtdxdtdx_dtdzdtdz; myepsf(myii(i),myjj(i))=dtdt_flu/pr;
+    dtdt_sol = dtdydtdy_sol + dtdxdtdx_dtdzdtdz; myepss(myii(i),myjj(i))=dtdt_sol/pr/gggg(i);
     // flu / sol
-//    flu_sur_sol = (kkkk(i)**2) * dtdydtdy_flu / dtdt_flu + (1 - dtdydtdy_flu / dtdt_flu) / gggg(i);
+    flu_sur_sol = (kkkk(i)**2) * dtdydtdy_flu / dtdt_flu + (1 - dtdydtdy_flu / dtdt_flu) / gggg(i);
     // sol / flu
-//    sol_sur_flu = dtdydtdy_sol / dtdt_sol / (kkkk(i)**2) + (1 - dtdydtdy_sol / dtdt_sol) * gggg(i);
+    sol_sur_flu = dtdydtdy_sol / dtdt_sol / (kkkk(i)**2) + (1 - dtdydtdy_sol / dtdt_sol) * gggg(i);
     // error
-//      myerror(myii(i),myjj(i)) = flu_sur_sol * sol_sur_flu;
+      myerror(myii(i),myjj(i)) = flu_sur_sol * sol_sur_flu;
 
-    [i, ttf-aa(1)*yf+pr*epf*(yf**2), dtdt_flu/pr, dtdt_sol/pr/gggg(i)]
+    [i, ttf-aa(1)*yf+pr*epf*(yf**2), dtdt_flu/pr, dtdt_sol/pr/gggg(i), flu_sur_sol * sol_sur_flu]
 
   end
 
 end
+
+write_csv([mygg;mykk;myg2;mytt;mydyttf;mydytts;mydtdtxz;mydtdtyf;mydtdtys;myerror], strcat(["./csv/interfacem.csv"])," ");
 
 exit;
