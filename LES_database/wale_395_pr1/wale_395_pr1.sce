@@ -173,21 +173,26 @@ end
 write_csv([ym(nb_sol+1:ny),dissm(nb_sol+1:ny),mudissm(nb_sol+1:ny)], "./csv/diss1.csv"," ");
 write_csv([yp(nb_sol+1:ny),dissp(nb_sol+1:ny),mudissp(nb_sol+1:ny)], "./csv/diss2.csv"," ");
 
-//dy = zeros(ny,1);
-//dy(1)=2*y(1);
-//for i=2:ny
-//  dy(i)=2*(y(i)-sum(dy));
-//end
-//vcel2 = ((dx*dy(1:ny)*dz).^(2/3));
-//smod = sqrt(2).*sqrt(dudx2+dvdy2+dwdz2+0.5*(dudy.*dudy+dudy2+dudz2+dvdx2+dvdz2+dwdx2+dwdy2));
-//cs = mu_t(1:ny)./( 4*vcel2(1:ny).*smod(1:ny) );
-//write_csv([ym,um,mu_tm/mu,sqrt(cs)], "./csv/moy1.csv"," ");
-
 // Diric + Neuma + Robin + Conjg
 nb_head = 5;
 head=["diric","neuma","11","12","13"];
 gggg=[ 1.    , 1.    ,  1., 1.3, 0.1];
 kkkk=[ 1.    , 1.    ,  1., 2.8, 0.23];
+
+myii = zeros(5,1);
+myjj = zeros(5,1);
+mygg = zeros(3,1);
+mykk = zeros(3,1);
+myg2 = zeros(3,1);
+mytt = zeros(3,1);
+myepsf = zeros(3,1);
+myepss = zeros(3,1);
+mydyttf = zeros(3,1);
+mydytts = zeros(3,1);
+mydtdtxz = zeros(3,1);
+mydtdtyf = zeros(3,1);
+mydtdtys = zeros(3,1);
+myerror = zeros(3,1);
 
 // mean + variance + flux + grad + diss + mut*grad + mut*diss
 nb_tail = 1+1+3+3+6+3+1;
@@ -327,6 +332,12 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     nb_flu=nb_sol+1;
     g2 = 1/(kkkk(i)*sqrt(gggg(i)));
     //
+      myii(i) = i-2;
+      myjj(i) = 1;
+      mygg(myii(i),myjj(i)) = gggg(i);
+      mykk(myii(i),myjj(i)) = kkkk(i);
+      myg2(myii(i),myjj(i)) = g2;
+    //
     t_tau=t_tau_m; u_tau=utau_m;
     ys=ym(nb_sol);
     yf=ym(nb_flu);
@@ -352,16 +363,16 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     //
     // Temperature variance : ttf-af*yf+pr*epf*(yf**2); OR tts-as*ys+pr*eps*(ys**2);
     //
-      //mytt(myii(i),myjj(i)) = ttf-af*yf+pr*epf*(yf**2);
+      mytt(myii(i),myjj(i)) = ttf-af*yf+pr*epf*(yf**2);
     //
 
     //
     // Derivative of temperature variance
     //
     //   on the fluid side : af-2*pr*epf*yf; OR (as-2*gggg(i)*pr*eps*ys)*g2;
-      //mydyttf(myii(i),myjj(i)) = af-2*pr*epf*yf;
+      mydyttf(myii(i),myjj(i)) = af-2*pr*epf*yf;
     //   on the solid side : (af-2*pr*epf*yf)/g2; OR as-2*gggg(i)*pr*eps*ys;
-      //mydytts(myii(i),myjj(i)) = as-2*gggg(i)*pr*eps*ys;
+      mydytts(myii(i),myjj(i)) = as-2*gggg(i)*pr*eps*ys;
 
     //
     // Wall-parallel dissipation
@@ -377,7 +388,7 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     xzepf=(t_dissm(nb_flu)-t_ydissm(nb_flu))/(pr*(re**2)*(t_tau**2)*(u_tau**2));
     //    on the fluid or solid side : pr*xzepf-bb(1)*yf; OR gggg(i)*pr*xzeps-bb(2)*ys;
     dtdxdtdx_dtdzdtdz = (pr*xzepf-bb(1)*yf);
-      //mydtdtxz(myii(i),myjj(i)) = dtdxdtdx_dtdzdtdz;
+      mydtdtxz(myii(i),myjj(i)) = dtdxdtdx_dtdzdtdz;
 
     //
     // Reconstruction of dtdy*dtdy
@@ -388,29 +399,29 @@ t_mudissp(1:nb_sol)=t_mudissp(1:nb_sol)/gggg(i);
     cosalpha = 0.5*aa(2)/sqrt(tts*yeps*gggg(i)*pr);
     //    on the fluid side
     dtdydtdy_flu = ( (aa(1)-2*pr*epf*yf)/(2*cosalpha*sqrt(ttf-aa(1)*yf+pr*epf*(yf**2))) )**2;
-      //mydtdtyf(myii(i),myjj(i)) = dtdydtdy_flu;
+      mydtdtyf(myii(i),myjj(i)) = dtdydtdy_flu;
     //    on the solid side
     dtdydtdy_sol = ( (aa(2)-2*gggg(i)*pr*eps*ys)/(2*cosalpha*sqrt(ttf-aa(1)*yf+pr*epf*(yf**2))) )**2;
-      //mydtdtys(myii(i),myjj(i)) = dtdydtdy_sol;
+      mydtdtys(myii(i),myjj(i)) = dtdydtdy_sol;
 
     //
     // Reconstruction of ratios and error
     //
-    dtdt_flu = dtdydtdy_flu + dtdxdtdx_dtdzdtdz; //myepsf(myii(i),myjj(i))=dtdt_flu/pr;
-    dtdt_sol = dtdydtdy_sol + dtdxdtdx_dtdzdtdz; //myepss(myii(i),myjj(i))=dtdt_sol/pr/gggg(i);
+    dtdt_flu = dtdydtdy_flu + dtdxdtdx_dtdzdtdz; myepsf(myii(i),myjj(i))=dtdt_flu/pr;
+    dtdt_sol = dtdydtdy_sol + dtdxdtdx_dtdzdtdz; myepss(myii(i),myjj(i))=dtdt_sol/pr/gggg(i);
     // flu / sol
     flu_sur_sol = (kkkk(i)**2) * dtdydtdy_flu / dtdt_flu + (1 - dtdydtdy_flu / dtdt_flu) / gggg(i);
     // sol / flu
     sol_sur_flu = dtdydtdy_sol / dtdt_sol / (kkkk(i)**2) + (1 - dtdydtdy_sol / dtdt_sol) * gggg(i);
     // error
-      //myerror(myii(i),myjj(i)) = flu_sur_sol * sol_sur_flu;
-
-    //myepss_sur_epsf(myii(i),myjj(i)) = (dtdt_sol/pr/gggg(i)) / (dtdt_flu/pr);
+      myerror(myii(i),myjj(i)) = flu_sur_sol * sol_sur_flu;
 
     [i, ttf-aa(1)*yf+pr*epf*(yf**2), dtdt_flu/pr, dtdt_sol/pr/gggg(i), flu_sur_sol * sol_sur_flu]
 
   end
 
 end
+
+write_csv([mygg;mykk;myg2;mytt;mydyttf;mydytts;mydtdtxz;mydtdtyf;mydtdtys;myerror], strcat(["./csv/interfacem.csv"])," ");
 
 exit;
