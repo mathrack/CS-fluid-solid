@@ -8,11 +8,11 @@
 
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
@@ -155,6 +155,7 @@ character*80     chaine
 integer          iel
 double precision qdm, h, rot, y
 double precision, dimension(:), pointer ::  cpro_rom
+integer, allocatable, dimension(:) :: lstelt
 type(var_cal_opt) :: vcopt
 
 !===============================================================================
@@ -164,6 +165,8 @@ type(var_cal_opt) :: vcopt
 ! 1. Initialization
 !===============================================================================
 
+! Allocate a temporary array for cells selection
+allocate(lstelt(ncel))
 call field_get_key_struct_var_cal_opt(ivarfl(iu), vcopt)
 if (vcopt%iwarni.ge.1) then
   call field_get_label(ivarfl(ivar), chaine)
@@ -204,6 +207,9 @@ enddo
 !----
 ! End
 !----
+
+! Deallocate the temporary array
+deallocate(lstelt)
 
 return
 end subroutine ustsnv
@@ -362,10 +368,12 @@ double precision crvexp(ncelet), crvimp(ncelet)
 ! Local variables
 
 character*80     chaine
-integer          ivar, iiscvr,  iel, ilelt, nlelt
+integer          ivar, iiscvr,  iel
+integer          ilelt, nlelt
 double precision, dimension(:), pointer ::  cpro_rom
 double precision, dimension(:,:), pointer :: vel
 double precision ubulk, surf, y
+integer, allocatable, dimension(:) :: lstelt
 type(var_cal_opt) :: vcopt
 
 !===============================================================================
@@ -376,6 +384,8 @@ type(var_cal_opt) :: vcopt
 ! 1. Initialization
 !===============================================================================
 
+! Allocate a temporary array for cells selection
+allocate(lstelt(ncel))
 ivar = isca(iscal)
 call field_get_key_struct_var_cal_opt(ivarfl(ivar), vcopt)
 call field_get_label(ivarfl(ivar), chaine)
@@ -421,6 +431,9 @@ enddo
 !----
 ! End
 !----
+
+! Deallocate the temporary array
+deallocate(lstelt)
 
 return
 end subroutine ustssc

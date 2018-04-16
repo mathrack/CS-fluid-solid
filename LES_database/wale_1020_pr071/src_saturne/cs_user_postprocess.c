@@ -2,12 +2,12 @@
  * Define postprocessing output.
  *============================================================================*/
 
-/* Code_Saturne version 5.0.3 */
+/* Code_Saturne version 5.0.7-patch */
 
 /*
   This file is part of Code_Saturne, a general-purpose CFD tool.
 
-  Copyright (C) 1998-2017 EDF S.A.
+  Copyright (C) 1998-2018 EDF S.A.
 
   This program is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -67,6 +67,17 @@
 
 /*----------------------------------------------------------------------------*/
 
+BEGIN_C_DECLS
+
+/*============================================================================
+ * Local (user defined) function definitions
+ *============================================================================*/
+
+/*============================================================================
+ * User function definitions
+ *============================================================================*/
+
+/*----------------------------------------------------------------------------*/
 /*!
  * \brief Define post-processing writers.
  *
@@ -83,7 +94,7 @@ cs_user_postprocess_writers(void)
   fvm_writer_time_dep_t   time_dep = FVM_WRITER_FIXED_MESH;
   bool       output_at_start = false;
   bool       output_at_end = true;
-  int        frequency_n = 200000;//50;
+  int        frequency_n = 200000;
   double     frequency_t = -1.0;
   const char format_name[] = "EnSight Gold";
   const char format_options[] = "";

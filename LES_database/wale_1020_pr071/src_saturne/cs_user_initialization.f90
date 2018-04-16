@@ -1,10 +1,10 @@
 !-------------------------------------------------------------------------------
 
-!                      Code_Saturne version 5.0.3
+!                      Code_Saturne version 5.0.7-patch
 !                      --------------------------
 ! This file is part of Code_Saturne, a general-purpose CFD tool.
 !
-! Copyright (C) 1998-2017 EDF S.A.
+! Copyright (C) 1998-2018 EDF S.A.
 !
 ! This program is free software; you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
@@ -131,12 +131,16 @@ double precision, dimension(ncel) :: my_rand_t
 double precision, dimension(:,:), pointer :: cvar_iu
 double precision, dimension(:), pointer :: cvar_it
 
+integer, allocatable, dimension(:) :: lstelt
+
 !===============================================================================
 
 
 !===============================================================================
 ! Initialization
 !===============================================================================
+
+allocate(lstelt(ncel)) ! temporary array for cells selection
 
 if (isuite.eq.0) then
 
@@ -153,9 +157,9 @@ if (isuite.eq.0) then
   do iel=1,ncel
     y=xyzcen(2,iel)
     if (-1. .le. y .and. y .le. 1.) then
-      cvar_iu(1,iel)=(1.5+noise*my_rand_var(1,iel))*(1.0-y**2)
-      cvar_iu(2,iel)=(0.0+noise*my_rand_var(2,iel))*(1.0-y**2)
-      cvar_iu(3,iel)=(0.0+noise*my_rand_var(3,iel))*(1.0-y**2)
+      cvar_iu(1,iel)=(1.5+noise*my_rand_var(1,iel))*(1.0-y**2)*2.d0
+      cvar_iu(2,iel)=(0.0+noise*my_rand_var(2,iel))*(1.0-y**2)*2.d0
+      cvar_iu(3,iel)=(0.0+noise*my_rand_var(3,iel))*(1.0-y**2)*2.d0
     else
       cvar_iu(1,iel)=0.
       cvar_iu(2,iel)=0.
@@ -183,14 +187,15 @@ if (isuite.eq.0) then
     do iel=1,ncel
       y=xyzcen(2,iel)
       if (-1. .le. y .and. y .le. 1.) then
-        cvar_it(iel)=(1.5+noise*my_rand_t(iel))*(1.0-y**2)
+        cvar_it(iel)=(1.5+noise*my_rand_t(iel))*(1.0-y**2)*2.d0
       else
-        cvar_it(iel)=(1.+noise*my_rand_t(iel))*(1.0-abs(y))
+        cvar_it(iel)=(1.+noise*my_rand_t(iel))*(1.0-abs(y))*2.d0
       endif
     enddo
   enddo
   endif
 endif
+
 !--------
 ! Formats
 !--------
@@ -198,6 +203,8 @@ endif
 !----
 ! End
 !----
+
+deallocate(lstelt) ! temporary array for cells selection
 
 return
 end subroutine cs_user_f_initialization

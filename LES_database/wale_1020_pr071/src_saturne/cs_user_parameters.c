@@ -2,12 +2,12 @@
  * User functions for input of calculation parameters.
  *============================================================================*/
 
-/* Code_Saturne version 5.0.3 */
+/* Code_Saturne version 5.0.7-patch */
 
 /*
   This file is part of Code_Saturne, a general-purpose CFD tool.
 
-  Copyright (C) 1998-2017 EDF S.A.
+  Copyright (C) 1998-2018 EDF S.A.
 
   This program is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -142,7 +142,8 @@ _my_grad_u(cs_real_33_t *grad)
 }
 // This wrapper outputs the tensor grad(u)
 static void
-_my_ugrad(const void *input, cs_real_t *output)
+_my_ugrad(const void *input,
+          cs_real_t *output)
 {
   // Allocate memory
   const cs_mesh_t *m = cs_glob_mesh;
@@ -165,7 +166,8 @@ _my_ugrad(const void *input, cs_real_t *output)
 }
 // This wrapper outputs the tensor mu_t * grad(u)
 static void
-_my_mut_ugrad(const void *input, cs_real_t *output)
+_my_mut_ugrad(const void *input,
+              cs_real_t *output)
 {
   // Allocate memory
   const cs_mesh_t *m = cs_glob_mesh;
@@ -189,7 +191,8 @@ _my_mut_ugrad(const void *input, cs_real_t *output)
 }
 // This wrapper outputs the scalar mu_t * sum_{i,j} ( dUi / dXj )**2
 static void
-_my_udiss(const void *input, cs_real_t *output)
+_my_udiss(const void *input,
+          cs_real_t *output)
 {
   // Allocate memory
   const cs_mesh_t *m = cs_glob_mesh;
@@ -239,7 +242,8 @@ _my_grad_t(cs_real_3_t *grad, const int fi)
 }
 // This wrapper outputs the vector grad(T)
 static void
-_my_tgrad(const void *input, cs_real_t *output)
+_my_tgrad(const void *input,
+          cs_real_t *output)
 { // Input argument is field name
   const int fid = cs_field_id_by_name( *((const char **)input) );
   // Allocate memory
@@ -261,7 +265,8 @@ _my_tgrad(const void *input, cs_real_t *output)
 }
 // This wrapper outputs the vector mu_t * grad(T) / Prt
 static void
-_my_prt_tgrad(const void *input, cs_real_t *output)
+_my_prt_tgrad(const void *input,
+              cs_real_t *output)
 { // Input argument is field name
   const int fid = cs_field_id_by_name( *((const char **)input) );
   // Allocate memory
@@ -286,7 +291,8 @@ _my_prt_tgrad(const void *input, cs_real_t *output)
 }
 // This wrapper outputs the scalar mu_t * sum_{j} ( dT / dXj )**2 / Pr_t
 static void
-_my_tdiss(const void *input, cs_real_t *output)
+_my_tdiss(const void *input,
+              cs_real_t *output)
 { // Input argument is field name
   const int fid = cs_field_id_by_name( *((const char **)input) );
   // Allocate memory
@@ -324,7 +330,7 @@ _my_tdiss(const void *input, cs_real_t *output)
 void
 cs_user_model(void)
 {
-  const int my_nb_scalar = 4;
+  const int my_nb_scalar = 5;
   const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
@@ -359,7 +365,7 @@ cs_user_parameters(void)
   var_cal_opt.nswrgr = 1;
   cs_field_set_key_struct(fu, key_cal_opt_id, &var_cal_opt);
 
-  const int my_nb_scalar = 4;
+  const int my_nb_scalar = 5;
   const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
@@ -392,7 +398,7 @@ void
 cs_user_time_moments(void)
 {
   int nt_start = 1500010;
-  const int my_nb_scalar = 4;
+  const int my_nb_scalar = 5;
   static const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
@@ -521,7 +527,7 @@ cs_user_time_moments(void)
                                   -1,   // t_start
                                   CS_TIME_MOMENT_RESTART_AUTO,
                                   NULL);
-    // Average of mu_t * sum_{i,j} [ ( dUi / dXj )**2 ]
+    // Average of mu_t * sum_{i,j} ( dUi / dXj )**2
     cs_time_moment_define_by_func("mu_t_u_diss",
                                   CS_MESH_LOCATION_CELLS,
                                   1,
@@ -579,7 +585,7 @@ cs_user_time_moments(void)
                                     -1,   // t_start
                                     CS_TIME_MOMENT_RESTART_AUTO,
                                     NULL);
-      // Average of mu_t * sum_{j} [ ( dT / dXj )**2 ] / Pr_t
+      // Average of mu_t * sum_{j} ( dT / dXj )**2 / Pr_t
       snprintf(str, sizeof(str), "%s%s", my_scal_name[iii], name_ext[3]);
       cs_time_moment_define_by_func(str,
                                     CS_MESH_LOCATION_CELLS,
@@ -608,7 +614,7 @@ cs_user_time_moments(void)
 void
 cs_user_internal_coupling(void)
 {
-  const int my_nb_scalar = 4;
+  const int my_nb_scalar = 5;
   const char *my_scal_name[] = {"diric","neuma",
                                 "11","12","13","14","15","16","17",
                                 "21","22","23","24","25","26","27",
