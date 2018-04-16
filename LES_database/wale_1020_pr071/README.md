@@ -40,8 +40,8 @@ Sub MacroN()
 
     Sheets("scalar").Select
     Dim ny As Integer: ny = 117
-    Dim comment() As String: comment = Split("diric,neuma,11,12", ",")
-    Dim n_fld As Integer: n_fld = 4
+    Dim comment() As String: comment = Split("diric,neuma,11,12,13", ",")
+    Dim n_fld As Integer: n_fld = 5
     Dim i As Integer, ifld As Integer
     For ifld = 0 To n_fld - 1
         i = 1 + ifld * (ny + 1)
@@ -56,6 +56,7 @@ Sub MacroN()
         Cells(i, 9).FormulaR1C1 = "SGS Diss."
         Call insert_file(filepath, comment(ifld) & "m", i + 1, 1)
     Next
+    Call insert_file(filepath, "interfacem", 22, 17)
 End Sub
 
 Sub insert_file(ByVal filepath As String, ByVal fld As String, ByRef i As Integer, ByRef j As Integer)

@@ -1,9 +1,10 @@
 set -e
-fid='00008'
+fid='00006'
 scalar[1]='diric'
 scalar[2]='neuma'
 scalar[3]='11'
 scalar[4]='12'
+scalar[5]='13'
 file='../raw/results'
 ln -s ${file}.u_mean.${fid}.x.1d.dat um1d.dat
 ln -s ${file}.u_mean.${fid}.y.1d.dat vm1d.dat
