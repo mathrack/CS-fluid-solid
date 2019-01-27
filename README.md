@@ -1,4 +1,4 @@
-The present data and the associated source code are freely available under the GNU GPL v3 licence.
+The present data and the associated source code are freely available under the GNU GPL v3 licence. They correspond to the paper entitled *A Correlation for the Discontinuity of the Temperature Variance Dissipation Rate at the Fluid-Solid Interface in Turbulent Channel Flows* we have published in the journal [Flow, Turbulence and Combustion](https://doi.org/10.1007/s10494-019-00008-0).
 
 # Direct access to our LES results (Microsoft Excel files)
 
@@ -17,6 +17,8 @@ The present data and the associated source code are freely available under the G
 The folder [LES_database](/LES_database/) contains the data and source code used to perform LES of the turbulent channel flow with conjugate heat transfer using *Code_Saturne*.
 
 The folder [LES_VnV](/LES_VnV/) contains the data and source code used to verify and validate the internal coupling module implemented in *Code_Saturne*.
+
+The folder [FTaC](/FTaC/) contains the source files used to generate the paper as submitted to the journal and accepted for publication.
 
 Some subsets of the present work were presented at the international conferences NURETH-17 (Xi'An, China) and NENE2017 (Bled, Slovenia) during September 2017.
 The corresponding proceedings are available on [HAL](https://hal.archives-ouvertes.fr/hal-01631515) and at [https://repo.ijs.si/CFLAG/NENE2017](https://repo.ijs.si/CFLAG/NENE2017).
